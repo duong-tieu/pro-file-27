@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<p id="result"></p>-->
+<!--<script>-->
+
+<!--  class ElectricLamp{-->
+<!--    constructor(status) {-->
+<!--      this.status = status;-->
+<!--    }-->
+<!--    getStatus(){-->
+<!--      return this.status;-->
+<!--    }-->
+<!--  }-->
+
+<!--  class SwitchButton{-->
+<!--    constructor(lamp, status) {-->
+<!--      this.status = status;-->
+<!--      this.lamp = lamp;-->
+<!--    }-->
+<!--    getLamp(){-->
+<!--      return this.lamp;-->
+<!--    }-->
+
+<!--    setLamp(lamp){-->
+<!--      this.lamp = lamp;-->
+<!--    }-->
+<!--    connectToLamp(Electriclamp){-->
+<!--      return this.lamp = Electriclamp;-->
+<!--    }-->
+
+<!--    switchOff(){-->
+<!--      this.lamp.status = false;-->
+<!--      return this.status = false;-->
+<!--    }-->
+
+<!--    switchOn(){-->
+<!--      this.lamp.status = true;-->
+<!--      return this.status = true;-->
+<!--    }-->
+<!--  }-->
+
+
+<!--  let electricLamp_1 = new ElectricLamp(false);-->
+
+<!--  let switchButton_1 = new SwitchButton(electricLamp_1,false); // kết nối giữa  công tắc 1 và đèn 1-->
+
+<!--  console.log(switchButton_1.switchOn());-->
+<!--  console.log(electricLamp_1.getStatus());-->
+<!--  console.log(switchButton_1.switchOff());-->
+<!--  console.log(electricLamp_1.getStatus());-->
+
+<!--</script>-->
+<script>
+    let Lamp = function (name) {
+        this.name = name;
+        this.status = false;
+        this.turnOn = function () {
+            if (this.status) {
+                console.log("đang sáng rồi mà")
+            } else {
+                console.log("đèn đã được bật!");
+                this.status =true;
+            }
+        };
+        this.turnOff = function () {
+            if (this.status) {
+                console.log("đèn đã được tắt!");
+                this.status =false
+            } else {
+                console.log("đang sáng rồi mà")
+
+            }
+        };
+    };
+    let switcher = function () {
+        this.lamp = {};
+        this.conectStatus = false;
+        this.conectToLamp = function (obj) {
+            this.lamp = obj;
+            this.status = true;
+        };
+        this.getStatus = function () {
+            if (this.status) {
+                console.log(this.lamp.name);
+                console.log(this.lamp.status);
+            }
+        };
+        this.turnOff = function () {
+            if (this.status) {
+                this.lamp.turnOff();
+                this.getStatus();
+            }
+        };
+        this.turnOn = function () {
+            if (this.status) {
+                this.lamp.turnOn();
+                this.getStatus();
+            }
+        }
+    };
+
+
+    let sonySwitcher = new switcher();
+    let sonyLamp = new Lamp("h1102");
+    sonySwitcher.conectStatus();
+    sonySwitcher.conectToLamp(sonyLamp);
+    sonySwitcher.turnOn();
+    sonySwitcher.turnOff();
+</script>
+</body>
+</html>
